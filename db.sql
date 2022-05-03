@@ -27,4 +27,4 @@ drop table if exists Exercise;
 create table Exercise (
     ExerciseID int primary key auto_increment,
     ExerciseType varchar(250)
-)
+);

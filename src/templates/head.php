@@ -22,7 +22,7 @@
             <a class="nav-link active" aria-current="page" href="./">Home</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="people.php">People</a>
+            <a class="nav-link" href="user.html">Lisää käyttäjä</a>
             </li>
             <li class="nav-item">
             <a class="nav-link" href="person.php">Add new employee</a>
