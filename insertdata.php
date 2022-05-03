@@ -1,10 +1,10 @@
 <?php
 
-require 'db.php';
+require 'src/modules/db.php';
 
-$username = "Juhosk";
+$username = $_GET["username"];
 
-$sql = "insert into users (username) values ('Juho Karppinen')";
+$sql = "insert into users (username) values ('$username')";
 
 $numberofinserted = $pdo->exec($sql);
 

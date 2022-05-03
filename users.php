@@ -1,6 +1,6 @@
 <?php
 
-require 'db.php';
+require 'src/modules/db.php';
 
 $sql = "Select * from users";
 $users = $pdo->query($sql);
