@@ -2,22 +2,22 @@ drop database if exists tietokantaohjelmointi;
 
 create database tietokantaohjelmointi;
 
-drop table if exists user;
-create table user (
+drop table if exists users;
+create table users (
     id int primary key auto_increment,
     username varchar(250) not null
 );
 drop table if exists userworkout;
 create table userworkout (
     id int primary key auto_increment,
-    user_id int not null,
-    workoutdate DATE
-    index user_id (user_id),
-    FOREIGN key (user_id) REFERENCES user(id) on delete RESTRICT
+    users_id int not null,
+    workoutdate DATE,
+    index users_id (users_id),
+    FOREIGN key (users_id) REFERENCES users(id) on delete RESTRICT
 );
 drop table if exists WorkoutExercise;
 create table WorkoutExercise (
-    ExerciseID int primary key,
+    ExerciseID int,
     WorkoutId int auto_increment,
     reps int,
     weight int,
