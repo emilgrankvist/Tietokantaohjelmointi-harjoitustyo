@@ -2,59 +2,29 @@ drop database if exists tietokantaohjelmointi;
 
 create database tietokantaohjelmointi;
 
-create table peli (
+drop table if exists user;
+create table user (
     id int primary key auto_increment,
-    peli_nimi varchar (100) not null,
-    valmistaja_id int,
-    genre_id int,
-    arvostelu_id int,
-    peliaiaka_id int,
-    julkaisupvm date
+    username varchar(250) not null
 );
-
-create table arvostelu (
-    id int primary key auto_increment not null,
-    kayttaja varchar (250),
-    kriitikko varchar (250),
-    peli_id int not null,
-    index peli_id (peli_id),
-    foreign key (peli_id) references peli(id) on delete restrict
+drop table if exists userworkout;
+create table userworkout (
+    id int primary key auto_increment,
+    user_id int not null,
+    workoutdate DATE
+    index user_id (user_id),
+    FOREIGN key (user_id) REFERENCES user(id) on delete RESTRICT
 );
-
-create table valmistaja (
-    id int primary key auto_increment not null,
-    valmistaja varchar (100) not null,
-    peli_id int not null,
-    index peli_id (peli_id),
-    foreign key (peli_id) references peli(id) on delete restrict 
+drop table if exists WorkoutExercise;
+create table WorkoutExercise (
+    ExerciseID int primary key,
+    WorkoutId int auto_increment,
+    reps int,
+    weight int,
+    primary key (exerciseID, WorkoutId)
 );
-
-create table peliaika (
-    id int primary key auto_increment not null,
-    tarina int,
-    koko_peli int,
-    oma_aika int,
-    peli_id int not null,
-    index peli_id (peli_id),
-    foreign key (peli_id) references peli(id) on delete restrict 
-);
-
-create table genre (
-    id int primary key auto_increment not null,
-    genre varchar (100) not null,
-    genre_id int not null
-);
-
-create table pelingenre (
-    id int primary key auto_increment not null,
-    peli_id int not null,
-    genre_id int not null,
-    index peli_id (peli_id),
-    foreign key (peli_id) references peli(id) on delete restrict,
-    index genre_id (genre_id),
-    foreign key (genre_id) references genre(id) on delete restrict
-);
-
-/*select peli_nimi, valmistaja
-from peli, valmistaja
-where peli_id = 1 and peli.id = valmistaja.peli_id*/
+drop table if exists Exercise;
+create table Exercise (
+    ExerciseID id int primary key auto_increment,
+    ExerciseType varchar(250)
+)
