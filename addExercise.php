@@ -7,7 +7,7 @@ if( !isset($_POST["username"]) || !isset($_POST["ExerciseID"]) || !isset($_POST[
 }
 
 $username = $_POST["username"];
-$exercise = $_POST["ExerciseType"];
+$exercise = $_POST["ExerciseID"];
 $reps = $_POST["reps"];
 $weight = $_POST["weight"];
 

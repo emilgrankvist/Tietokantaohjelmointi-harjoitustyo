@@ -2,10 +2,12 @@
 
 echo '<form action="addExercise.php" method="post"';
 
-//require 'src/modules/db.php';
+
 include 'personDropdown.php';
+include 'exerciseDropdown.php';
 
 personDropdown();
+exerciseDropdown();
 
 echo'<label for="reps">Reps</label><br>
 <input type="number" name="reps" id="reps" ><br>
