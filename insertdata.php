@@ -2,7 +2,7 @@
 
 require 'src/modules/db.php';
 
-$username = $_GET["username"];
+$username = $_POST["username"];
 
 $sql = "insert into users (username) values ('$username')";
 
