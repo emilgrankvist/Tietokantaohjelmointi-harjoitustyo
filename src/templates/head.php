@@ -25,7 +25,7 @@
             <a class="nav-link" href="user.html">Lisää käyttäjä</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="person.php">Add new employee</a>
+            <a class="nav-link" href="exercise.php">Lisää harjoitus</a>
             </li>
             <li class="nav-item">
             <a class="nav-link" href="worktime.php">Add new work time</a>
