@@ -8,7 +8,7 @@ $users = $pdo->query($sql);
 if ( $users->rowcount() > 0 ) {
     echo "<ul>";
     while ( $row = $users->fetch() ) {
-        echo "<li>" . $row["id"] . " " . $row ["username"]. "</li>";
+        echo "<li>" . $row ["username"]. "</li>";
     } 
     echo "</ul>";
 }
