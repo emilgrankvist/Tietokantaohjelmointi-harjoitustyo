@@ -10,9 +10,9 @@ create table peli (
 
 create table arvostelu (
     id int primary key auto_increment not null,
-    peli_id int not null,
     kayttaja varchar (250),
     kriitikko varchar (250),
+    peli_id int not null,
     index peli_id (peli_id),
     foreign key (peli_id) references peli(id) on delete restrict
 );
@@ -27,10 +27,10 @@ create table valmistaja (
 
 create table peliaika (
     id int primary key auto_increment not null,
-    peli_id int not null,
     tarina int,
     koko_peli int,
     oma_aika int,
+    peli_id int not null,
     index peli_id (peli_id),
     foreign key (peli_id) references peli(id) on delete restrict 
 );
