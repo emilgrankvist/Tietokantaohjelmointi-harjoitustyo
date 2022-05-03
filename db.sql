@@ -1,3 +1,7 @@
+drop database if exists tietokantaohjelmointi;
+
+create database tietokantaohjelmointi;
+
 create table peli (
     id int primary key auto_increment,
     peli_nimi varchar (100) not null,
