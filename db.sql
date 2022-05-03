@@ -1,10 +1,10 @@
 create table peli (
     id int primary key auto_increment,
     peli_nimi varchar (100) not null,
-    valmistaja varchar (100),
-    genre varchar (100),
-    arvostelu varchar (250),
-    peliaiaka varchar (20),
+    valmistaja_id int,
+    genre_id int,
+    arvostelu_id int,
+    peliaiaka_id int,
     julkaisupvm date
 );
 
