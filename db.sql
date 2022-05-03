@@ -1,10 +1,10 @@
 create table peli (
     id int primary key auto_increment,
     peli_nimi varchar (100) not null,
-    valmistaja_id int,
-    genre_id int,
-    arvostelu_id int,
-    peliaiaka_id int,
+    valmistaja varchar (100),
+    genre varchar (100),
+    arvostelu varchar (250),
+    peliaiaka varchar (20),
     julkaisupvm date
 );
 
@@ -28,9 +28,9 @@ create table valmistaja (
 create table peliaika (
     id int primary key auto_increment not null,
     peli_id int not null,
-    tarina varchar (20),
-    koko_peli varchar (20),
-    oma_aika varchar (20),
+    tarina int,
+    koko_peli int,
+    oma_aika int,
     index peli_id (peli_id),
     foreign key (peli_id) references peli(id) on delete restrict 
 );
