@@ -1,10 +1,13 @@
 <?php
+include TEMPLATES_DIR.'head.php';
+include TEMPLATES_DIR.'personDropdown.php';
+
 
 echo '<form action="addExercise.php" method="post"';
 
 
-include 'personDropdown.php';
-include 'exerciseDropdown.php';
+
+
 
 personDropdown();
 exerciseDropdown();

@@ -1,5 +1,8 @@
 <?php
-require 'src/modules/db.php';
+
+
+function addExercise($username, $exercise, $reps, $weight) {
+    require_once MODULES_DIR.'bp.php';
 
 if( !isset($_POST["username"]) || !isset($_POST["ExerciseID"]) || !isset($_POST["reps"]) || !isset($_POST["weight"]) ) {
      echo "Parametrejä puuttui, Ei voida lisätä tyäaikaa.";
@@ -23,6 +26,7 @@ try{
 }catch(PDOException $e){
     echo "Jokin meni pieleen.<br>";
     echo $e->getMessage();
-}
+}}
+
 
    
