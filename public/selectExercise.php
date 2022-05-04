@@ -2,6 +2,9 @@
 include TEMPLATES_DIR.'head.php';
 include TEMPLATES_DIR.'personDropdown.php';
 
+personDropdown();
+
+exerciseDropdown(); 
 
 echo '<form action="addExercise.php" method="post"';
 
@@ -9,8 +12,8 @@ echo '<form action="addExercise.php" method="post"';
 
 
 
-personDropdown();
-exerciseDropdown();
+
+
 
 echo'<label for="reps">Reps</label><br>
 <input type="number" name="reps" id="reps" ><br>

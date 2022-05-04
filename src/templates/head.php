@@ -28,7 +28,7 @@
             <a class="nav-link" href="exercise.php">Lisää harjoitus</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="worktime.php">Add new work time</a>
+            <a class="nav-link" href="selectExercise.php">Merkitse reeni</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="worklist.php">Worktime Report</a>

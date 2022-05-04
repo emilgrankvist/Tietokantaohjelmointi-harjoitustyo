@@ -31,9 +31,9 @@ function ExerciseDropdown($selectedId = -1){
     // Loop till there are no more rows
 foreach($exercise as $e){
     echo '<option value="'
-        . $e["ID"] .'"'
-        .($e["ID"] == $selectedId ? ' selected' : ''). '>' 
-        . $e["exerciseType"]. ' '
+        . $e["ExerciseID"] .'"'
+        .($e["ExerciseID"] == $selectedId ? ' selected' : ''). '>' 
+        . $e["ExerciseType"]. ' '
           
         
         .'</option>';
