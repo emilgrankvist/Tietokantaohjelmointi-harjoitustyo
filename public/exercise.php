@@ -3,6 +3,16 @@
 include TEMPLATES_DIR.'head.php';
 include MODULES_DIR.'exercise.php';
 
+$exercises = getExercise();
+// Print person list
+echo "<h5>Harjoitukset:<h5>"
+."<br>"
+."<ul>";
+foreach($exercises as $x){
+    echo "<li>".$x["ExerciseType"];
+}
+echo "</ul>";
+
     $exercise = filter_input(INPUT_POST, "exercise");
 
     if(isset($exercise)) {
