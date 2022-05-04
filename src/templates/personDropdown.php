@@ -38,5 +38,6 @@ foreach($exercise as $e){
         
         .'</option>';
 }
+    echo "</select><br>";
     
 }

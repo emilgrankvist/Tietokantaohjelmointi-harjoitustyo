@@ -18,13 +18,14 @@ if(isset($username)) {
 
 
 <form action="addExercise.php" method="post">
-<?php personDropdown();
-exerciseDropdown(); echo "<br>" ?>
-<label for="reps">Reps</label><br>
-<input type="number" name="reps" id="reps" ><br>
-<label for="weight">Weight</label><br>
-<input type="number" name="weight" id="weight" ><br> 
-<input type="submit" class="btn btn-primary" value="Lisää reeni">
+
+    <?php personDropdown(); exerciseDropdown(); ?>
+
+    <label for="reps">Toistot</label><br>
+    <input type="number" name="reps" id="reps" ><br>
+    <label for="weight">Paino</label><br>
+    <input type="number" name="weight" id="weight" ><br> 
+    <input type="submit" class="btn btn-primary" value="Lisää reeni">
 </form>
 
 
