@@ -5,42 +5,43 @@ function getUser(){
 
     try{
         $pdo = getPdoConnection();
-        // Create SQL query to get all rows from a table
+        
         $sql = "SELECT * FROM users";
-        // Execute the query
-        $user = $pdo->query($sql);
+        
+        $username = $pdo->query($sql);
 
-        return $user->fetchAll();
+        return $username->fetchAll();
     }catch(PDOException $e){
         throw $e;
     }
 }
 
-function addUser($user){
+function addUser($username, $password){
     require_once MODULES_DIR.'db.php';
 
 
     //tarkistetaan onko muuttujia asetettu
 
-    if (!isset($user)){
-        throw new Exception("Parametreja puuttuu! Käyttäjää ei voida lisätä!");
+    if( !isset($username) || !isset($password) ){
+        throw new Exception("Käyttäjää ei voida lisätä koska arvoja puuttuu!");
     }
 
     //tarkistetaan ettei ole tyhjiä arvoja
 
-    if(empty($user)) {
+    if(empty($username) || empty($password)) {
         throw new Exception("Tyhjää arvoa ei voida laittaa");
     }
 
     try{
         $pdo = getPdoConnection();
-        $sql = "insert into users (username) values (?)";
+        $sql = "insert into users (username, password) values (?, ?)";
         $statement = $pdo->prepare($sql);
-        $statement->bindParam(1, $user);
-
+        $statement->bindParam(1, $username);
+        $hash_password = password_hash($password, PASSWORD_DEFAULT);
+        $statement->bindParam(2, $hash_password);
         $statement->execute();
 
-        echo "Käyttäjä".$user." on lisätty tietokantaan";
+        echo "Käyttäjä".$username." on lisätty tietokantaan";
     } catch (PDOException $e) {
         throw $e;
     }
