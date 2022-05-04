@@ -5,7 +5,8 @@ create database tietokantaohjelmointi;
 drop table if exists users;
 create table users (
     ID int primary key auto_increment,
-    username varchar(250) not null
+    username varchar(250) not null UNIQUE,
+    password VARCHAR(255)
 );
 drop table if exists userworkout;
 create table userworkout (

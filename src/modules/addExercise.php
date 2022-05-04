@@ -1,7 +1,7 @@
 <?php
 
 
-function addExercise($username, $exercise, $reps, $weight) {
+function enterExercise($username, $exercise, $reps, $weight) {
     require_once MODULES_DIR.'bp.php';
 
 if( !isset($_POST["username"]) || !isset($_POST["ExerciseID"]) || !isset($_POST["reps"]) || !isset($_POST["weight"]) ) {
@@ -9,10 +9,7 @@ if( !isset($_POST["username"]) || !isset($_POST["ExerciseID"]) || !isset($_POST[
     exit;
 }
 
-$username = $_POST["username"];
-$exercise = $_POST["ExerciseID"];
-$reps = $_POST["reps"];
-$weight = $_POST["weight"];
+
 
 if( empty($reps) || empty($weight) ){
     echo "Et voi asettaa tyhjiä arvoja!";
