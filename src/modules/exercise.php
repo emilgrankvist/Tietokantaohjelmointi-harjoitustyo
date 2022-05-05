@@ -67,3 +67,30 @@ try{
     echo "Jokin meni pieleen.<br>";
     echo $e->getMessage();
 }}
+
+function deleteExcersice($id) {
+    require_once MODULES_DIR.'db.php';
+
+    if (!isset($id)) {
+        throw new Exception("Parametreja puuttuu! Harjoitusta ei voida poistaa!");
+    }
+
+    try {
+        $pdo = getPdoConnection();
+        $pdo->beginTransaction();
+        $sql = "delete from workoutexercise where exerciseID = ?";
+        $statement = $pdo->prepare($sql);
+        $statement->bindParam(1, $id);
+        $statement->execute();
+
+        $sql = "delete from exercise where exerciseID = ?";
+        $statement = $pdo->prepare($sql);
+        $statement->bindParam(1,$id);
+        $statement->execute();
+
+        $pdo->commit();
+    } catch(PDOException $e) {
+        $pdo->rollBack();
+        throw $e;
+    }
+}
