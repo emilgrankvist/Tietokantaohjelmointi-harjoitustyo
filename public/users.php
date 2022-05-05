@@ -1,8 +1,8 @@
 <?php
-
-require 'src/modules/db.php';
+require_once MODULES_DIR.'db.php';
 
 $sql = "Select * from users";
+$pdo = getPdoConnection();
 $users = $pdo->query($sql);
 
 if ( $users->rowcount() > 0 ) {
@@ -11,5 +11,5 @@ if ( $users->rowcount() > 0 ) {
         echo "<li>" . $row ["username"]. "</li>";
     } 
     echo "</ul>";
-    echo '<a class="btn btn-primary" href="adduser.php" role="button">Lisää käyttäjä"</a>';
+    
 }
