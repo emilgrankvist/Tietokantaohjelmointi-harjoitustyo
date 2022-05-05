@@ -38,7 +38,7 @@ function addExercise($exercise){
 
         $statement->execute();
 
-        echo "Harjoitus".$exercise." on lisätty tietokantaan";
+        echo "Harjoitus ".$exercise." on lisätty tietokantaan";
     } catch (PDOException $e) {
         throw $e;
     }

@@ -4,7 +4,7 @@ include TEMPLATES_DIR.'head.php';
 include MODULES_DIR.'exercise.php';
 
 $exercises = getExercise();
-// Print person list
+// Print exercise list
 echo "<h5>Harjoitukset:<h5>"
 ."<br>"
 ."<ul>";
