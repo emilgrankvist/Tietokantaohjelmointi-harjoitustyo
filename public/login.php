@@ -4,7 +4,7 @@ include TEMPLATES_DIR.'head.php';
 include MODULES_DIR.'login.php';
 
     $username = filter_input(INPUT_POST, "username");
-    $password = filter_input(INPUT_POST, "PASSWORD");
+    $password = filter_input(INPUT_POST, "password");
 
         if(!isset($_SESSION["username"]) && isset($username)){
 
@@ -24,8 +24,8 @@ include MODULES_DIR.'login.php';
 <form action="login.php" method="post">
     <label for="username">Käyttäjä:</label><br>
     <input type="text" name="username" id="username"><br>
-    <label for="PASSWORD">Salasana:</label><br>
-    <input type="password" name="PASSWORD" id="PASSWORD"><br>
+    <label for="password">Salasana:</label><br>
+    <input type="password" name="password" id="password"><br>
     <input type="submit" class="btn btn-primary" value="Kirjaudu sisään">
  </form>
 

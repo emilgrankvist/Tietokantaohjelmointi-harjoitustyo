@@ -5,7 +5,7 @@ function login ($username, $password){
 
     
 
-    if(isset($username) || !isset($password) ){
+    if(!isset($username) || !isset($password) ){
         echo "Tietoja puuttui";
     }
 
