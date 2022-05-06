@@ -3,6 +3,7 @@ drop database if exists tietokantaohjelmointi;
 create database tietokantaohjelmointi;
 
 drop table if exists users;
+
 create table users (
     ID int primary key auto_increment,
     username varchar(250) not null UNIQUE,

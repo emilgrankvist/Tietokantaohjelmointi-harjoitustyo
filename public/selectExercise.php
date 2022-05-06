@@ -13,11 +13,13 @@ $weight = filter_input(INPUT_POST, "weight", FILTER_SANITIZE_NUMBER_INT);
 if(isset($username)) {
     enterExercise($username,$exercise,$reps,$weight);
     echo '<div class="alert alert-success" role="alert">Harjoitus lisästty!</div>';
-}
+} 
+
+
+
 ?>
 
-
-<form action="addExercise.php" method="post">
+<form action="exercise.php" method="post">
 
     <?php personDropdown(); exerciseDropdown(); ?>
 
@@ -30,4 +32,4 @@ if(isset($username)) {
 
 
 
-
+<?php include TEMPLATES_DIR.'foot.php'; ?>

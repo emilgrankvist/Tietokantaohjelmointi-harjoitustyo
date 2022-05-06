@@ -31,7 +31,7 @@
             <a class="nav-link" href="selectExercise.php">Merkitse reeni</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="worklist.php">Worktime Report</a>
+                <a class="nav-link" href="reenilista.php">Reenilista</a>
             </li>
             <li class="nav-item">
             <?php 

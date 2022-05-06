@@ -28,7 +28,7 @@ function login ($username, $password){
         }
         $row = $statement->fetch();
 
-        if(!password_verify($password, $row["PASSWORD"] )) {
+        if(!password_verify($password, $row["password"] )) {
             throw new Exception("Käyttäjätunnus tai salasana väärin.");
         }
                 
