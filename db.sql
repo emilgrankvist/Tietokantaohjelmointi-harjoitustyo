@@ -31,14 +31,4 @@ create table exercises (
    	workoutdate timestamp
     
 );
-/* drop table if exists WorkoutExercise; */
-
-/*Säilytetään tämä varalta :)*/
-/*create table WorkoutExercise (
-    ExerciseID int,
-    WorkoutID int,
-    reps int,
-    weight int,
-    primary key (exerciseID, WorkoutID)
-); */
 
