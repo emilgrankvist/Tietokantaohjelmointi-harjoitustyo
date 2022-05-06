@@ -15,7 +15,7 @@ create table Exercise (
     ExerciseID int primary key auto_increment,
     ExerciseType varchar(250) not null UNIQUE
 );
-drop table if exists exercises;
+ drop table if exists exercises; 
 create table exercises (
     ID int primary key not null AUTO_INCREMENT,
     
@@ -31,6 +31,8 @@ create table exercises (
    	workoutdate timestamp
     
 );
+/* drop table if exists WorkoutExercise; */
+
 /*Säilytetään tämä varalta :)*/
 /*create table WorkoutExercise (
     ExerciseID int,
