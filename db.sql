@@ -13,7 +13,7 @@ drop table if exists userworkout;
 create table userworkout (
     ID int primary key auto_increment,
     usersID int not null,
-    workoutdate DATE,
+    workoutdate TIMESTAMP,
     index usersID (usersID),
     FOREIGN key (usersID) REFERENCES users(ID) on delete RESTRICT
 );
