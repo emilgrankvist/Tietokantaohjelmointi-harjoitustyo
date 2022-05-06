@@ -60,9 +60,15 @@ if( empty($reps) || empty($weight) ){
 }
 
 try{
-    $sql = "insert into workoutexercise (ExerciseID, WorkoutID, reps, weight) VALUES (?,?,?,?)";
-    $statement = $pdo->prepare($sql);
+    $pdo = getPdoConnection();
+    // ampuu tiedot kantaan.
+    $sql2 = "INSERT INTO userworkout (usersID) VALUES (?)";
+    $sql1 = "INSERT INTO workoutexercise (ExerciseID, WorkoutID, reps, weight) VALUES (?,?,?,?)";
+    $statement = $pdo->prepare($sql2);
+    $statement = $pdo->prepare($sql1);
     $statement->execute( array($ExerciseID, $WorkoutID, $reps, $weight) );
+
+   
 
     echo "Harjoitus lisätty";
 }catch(PDOException $e){

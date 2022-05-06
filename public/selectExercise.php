@@ -5,21 +5,21 @@ include MODULES_DIR.'exercise.php';
 
 
 
-$username = filter_input(INPUT_POST, "username", FILTER_SANITIZE_SPECIAL_CHARS);
+$WorkoutID = filter_input(INPUT_POST, "WorkoutID", FILTER_SANITIZE_SPECIAL_CHARS);
 $exercise = filter_input(INPUT_POST, "ExerciseID", FILTER_SANITIZE_NUMBER_INT);
 $reps = filter_input(INPUT_POST, "reps", FILTER_SANITIZE_NUMBER_INT);
 $weight = filter_input(INPUT_POST, "weight", FILTER_SANITIZE_NUMBER_INT);
 
-if(isset($username)) {
-    enterExercise($username,$exercise,$reps,$weight);
-    echo '<div class="alert alert-success" role="alert">Harjoitus lisästty!</div>';
+if(isset($WorkoutID)) {
+    enterExercise($WorkoutID,$exercise,$reps,$weight);
+    echo '<div class="alert alert-success" role="alert">Harjoitus lisätty reenilistaan!</div>';
 } 
 
 
 
 ?>
 
-<form action="exercise.php" method="post">
+<form action="selectExercise.php" method="post">
 
     <?php personDropdown(); exerciseDropdown(); ?>
 
