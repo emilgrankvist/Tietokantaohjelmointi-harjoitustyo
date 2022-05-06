@@ -44,10 +44,10 @@ function addExercise($exercise){
     }
 }
 
-function enterExercise($username, $exercise, $reps, $weight) {
-    require_once MODULES_DIR.'bp.php';
+function enterExercise($WorkoutID, $ExerciseID, $reps, $weight) {
+    require_once MODULES_DIR.'db.php';
 
-if( !isset($_POST["username"]) || !isset($_POST["ExerciseID"]) || !isset($_POST["reps"]) || !isset($_POST["weight"]) ) {
+if( !isset($_POST["WorkoutID"]) || !isset($_POST["ExerciseID"]) || !isset($_POST["reps"]) || !isset($_POST["weight"]) ) {
      echo "Parametrejä puuttui, Ei voida lisätä tyäaikaa.";
     exit;
 }
@@ -60,13 +60,16 @@ if( empty($reps) || empty($weight) ){
 }
 
 try{
-    $sql = "insert into workoutexercise (ExerciseID, WorkoutID, reps, weight) values ('$ExerciseID', '$reps', '$weight')";
-    $pdo->exec($sql);
+    $sql = "insert into workoutexercise (ExerciseID, WorkoutID, reps, weight) VALUES (?,?,?,?)";
+    $statement = $pdo->prepare($sql);
+    $statement->execute( array($ExerciseID, $WorkoutID, $reps, $weight) );
+
     echo "Harjoitus lisätty";
 }catch(PDOException $e){
     echo "Jokin meni pieleen.<br>";
     echo $e->getMessage();
 }}
+
 
 function deleteExcersice($id) {
     require_once MODULES_DIR.'db.php';
