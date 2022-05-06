@@ -27,7 +27,7 @@ function ExerciseDropdown($selectedId = -1){
     
     $exercise = getExercise();
 
-    echo '<select exercise="exercise" id="exercise">';
+    echo '<select name="exercise" id="exercise">';
     // Loop till there are no more rows
 foreach($exercise as $e){
     echo '<option value="'

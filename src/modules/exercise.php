@@ -44,46 +44,36 @@ function addExercise($exercise){
     }
 }
 
-function enterExercise($ExerciseID, $userworkoutID, $reps, $weight) {
-    require_once MODULES_DIR.'db.php';
+function enterExercise($ExerciseID, $usersID, $reps, $weight) {
+    require_once MODULES_DIR.'db.php'; 
 
-if( !isset($_POST["ExerciseID"]) || !isset($_POST["userworkoutID"]) || !isset($_POST["reps"]) || !isset($_POST["weight"]) ) {
-     echo "Parametrejä puuttui, Ei voida lisätä harjoitusta.";
-    exit;
-}
-
-
-
-if( empty($reps) || empty($weight) ){
-    echo "Et voi asettaa tyhjiä arvoja!";
-    exit;
-}
-
-try{
-    $pdo = getPdoConnection();
-    // ampuu tiedot kantaan.
-    $sql = "INSERT INTO workoutexercise (ExerciseID, userworkoutID, reps, weight) VALUES (?,?,?,?)";
-    $statement = $pdo->prepare($sql);
-    $statement->execute( array($ExerciseID, $userworkoutID, $reps, $weight) );
+    
+    if( !isset($ExerciseID) || !isset($reps) || !isset($weight) ){
+        echo "Parametreja puuttui!! Ei voida lisätä työaikaa";
+        exit;
+    }
 
    
+    if( empty($reps) || empty($weight) ){
+        echo "Et voi asettaa tyhjiä arvoja!!";
+        exit;
+    }
 
-    echo "Harjoitus lisätty";
-}catch(PDOException $e){
-    echo "Jokin meni pieleen.<br>";
-    echo $e->getMessage();
-}}
+    try{
+        $pdo = getPdoConnection();
+        $sql = "INSERT INTO exercises (ExerciseID, usersID, reps, weight) VALUES (?,?,?,?)";
+        $statement = $pdo->prepare($sql);
+        $statement->execute( array($ExerciseID, $usersID, $reps, $weight) );
 
-function startNewWorkout($username) {
-    require_once MODULES_DIR.'db.php';
-    $pdo = getPdoConnection();
-    $sql = "insert into userworkout (usersID) values (?)";
-    $statement = $pdo->prepare($sql);
-    $statement->execute();
-
-
+        echo "Worktime logged<br><br>";
+    }catch(PDOException $e){
+        echo "Unable to add worktime";
+        echo $e->getMessage();
+    }
 
 }
+
+
 
 function deleteExcersice($id) {
     require_once MODULES_DIR.'db.php';

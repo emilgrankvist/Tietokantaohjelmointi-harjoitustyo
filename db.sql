@@ -9,36 +9,28 @@ create table users (
     username varchar(250) not null UNIQUE,
     password VARCHAR(255)
 );
-drop table if exists userworkout;
-create table userworkout (
-    userworkoutID int primary key auto_increment,
-    usersID int not null,
-    workoutdate TIMESTAMP,
-    index usersID (usersID),
-    FOREIGN key (usersID) REFERENCES users(ID) on delete RESTRICT
-);
+
 drop table if exists Exercise;
 create table Exercise (
     ExerciseID int primary key auto_increment,
     ExerciseType varchar(250)
 );
 drop table if exists WorkoutExercise;
-create table WorkoutExercise (
+create table exercises (
     ID int primary key not null AUTO_INCREMENT,
+    
     ExerciseID int not null,
     index ExerciseID(ExerciseID),
     foreign key (ExerciseID) REFERENCES exercise(ExerciseID),
     
-    userworkoutID int not null,
-    index userworkoutID(userworkoutID),
-    foreign key (userworkoutID) references userworkout(userworkoutID),
-    
-    
+    usersID int not null,
+    index usersID(usersID),
+    foreign key (usersID) references users(ID),
     reps int,
-    weight int
+    weight int,
+   	workoutdate timestamp
     
 );
-
 /*Säilytetään tämä varalta :)*/
 /*create table WorkoutExercise (
     ExerciseID int,
