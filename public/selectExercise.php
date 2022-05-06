@@ -5,13 +5,13 @@ include MODULES_DIR.'exercise.php';
 
 
 
-$WorkoutID = filter_input(INPUT_POST, "WorkoutID", FILTER_SANITIZE_SPECIAL_CHARS);
+$usersID = filter_input(INPUT_POST, "usersID", FILTER_SANITIZE_SPECIAL_CHARS);
 $exercise = filter_input(INPUT_POST, "ExerciseID", FILTER_SANITIZE_NUMBER_INT);
 $reps = filter_input(INPUT_POST, "reps", FILTER_SANITIZE_NUMBER_INT);
 $weight = filter_input(INPUT_POST, "weight", FILTER_SANITIZE_NUMBER_INT);
 
-if(isset($WorkoutID)) {
-    enterExercise($WorkoutID,$exercise,$reps,$weight);
+if(isset($usersID)) {
+    enterExercise($usersID, $exercise, $reps, $weight);
     echo '<div class="alert alert-success" role="alert">Harjoitus lisätty reenilistaan!</div>';
 } 
 

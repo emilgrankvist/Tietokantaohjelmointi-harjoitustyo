@@ -19,12 +19,30 @@ create table userworkout (
 );
 drop table if exists WorkoutExercise;
 create table WorkoutExercise (
+    ID int primary key not null AUTO_INCREMENT,
+    
+    ExerciseID int not null,
+    index ExerciseID(ExerciseID),
+    foreign key (ExerciseID) REFERENCES exercise(ExerciseID),
+    
+    userworkoutID int not null,
+    index userworkoutID(userworkoutID),
+    foreign key (ID) references userworkout(ID),
+    
+    
+    reps int,
+    weight int
+    
+);
+
+/*Säilytetään tämä varalta :)*/
+/*create table WorkoutExercise (
     ExerciseID int,
     WorkoutID int,
     reps int,
     weight int,
     primary key (exerciseID, WorkoutID)
-);
+); /*
 drop table if exists Exercise;
 create table Exercise (
     ExerciseID int primary key auto_increment,
