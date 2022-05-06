@@ -49,13 +49,13 @@ function enterExercise($ExerciseID, $usersID, $reps, $weight) {
 
     
     if( !isset($ExerciseID) || !isset($reps) || !isset($weight) ){
-        echo "Parametreja puuttui!! Ei voida lisätä työaikaa";
+        
         exit;
     }
 
    
     if( empty($reps) || empty($weight) ){
-        echo "Et voi asettaa tyhjiä arvoja!!";
+        echo "Täytäthän kaikki kohdat!";
         exit;
     }
 
@@ -65,9 +65,7 @@ function enterExercise($ExerciseID, $usersID, $reps, $weight) {
         $statement = $pdo->prepare($sql);
         $statement->execute( array($ExerciseID, $usersID, $reps, $weight) );
 
-        echo "Worktime logged<br><br>";
     }catch(PDOException $e){
-        echo "Unable to add worktime";
         echo $e->getMessage();
     }
 
@@ -85,7 +83,7 @@ function deleteExcersice($id) {
     try {
         $pdo = getPdoConnection();
         $pdo->beginTransaction();
-        $sql = "delete from workoutexercise where exerciseID = ?";
+        $sql = "delete from exercises where exerciseID = ?";
         $statement = $pdo->prepare($sql);
         $statement->bindParam(1, $id);
         $statement->execute();
