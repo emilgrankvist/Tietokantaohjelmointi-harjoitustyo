@@ -5,16 +5,19 @@ include MODULES_DIR.'exercise.php';
 
 
 
-$usersID = filter_input(INPUT_POST, "usersID", FILTER_SANITIZE_SPECIAL_CHARS);
-$exercise = filter_input(INPUT_POST, "ExerciseID", FILTER_SANITIZE_NUMBER_INT);
+$exerciseID = filter_input(INPUT_POST, "ExerciseID", FILTER_SANITIZE_SPECIAL_CHARS);
+$userworkoutID = filter_input(INPUT_POST, "userworkoutID", FILTER_SANITIZE_NUMBER_INT);
 $reps = filter_input(INPUT_POST, "reps", FILTER_SANITIZE_NUMBER_INT);
 $weight = filter_input(INPUT_POST, "weight", FILTER_SANITIZE_NUMBER_INT);
 
-if(isset($usersID)) {
-    enterExercise($usersID, $exercise, $reps, $weight);
-    echo '<div class="alert alert-success" role="alert">Harjoitus lisätty reenilistaan!</div>';
-} 
-
+if(isset($exerciseID)) {
+    try{
+        enterExercise($exerciseID,$userworkoutID,$reps,$weight);
+        echo '<div class="alert alert-success" role="alert">Harjoitus lisätty!</div>';
+    } catch (Exception $e){
+        echo '<div class="alert alert-danger" role="alert">'.$e->getMessage().'</div>';
+    }
+}
 
 
 ?>

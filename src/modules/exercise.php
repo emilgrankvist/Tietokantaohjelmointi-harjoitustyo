@@ -44,11 +44,11 @@ function addExercise($exercise){
     }
 }
 
-function enterExercise($usersID, $ExerciseID, $reps, $weight) {
+function enterExercise($ExerciseID, $userworkoutID, $reps, $weight) {
     require_once MODULES_DIR.'db.php';
 
-if( !isset($_POST["ExerciseID"]) || !isset($_POST["usersID"]) || !isset($_POST["reps"]) || !isset($_POST["weight"]) ) {
-     echo "Parametrejä puuttui, Ei voida lisätä tyäaikaa.";
+if( !isset($_POST["ExerciseID"]) || !isset($_POST["userworkoutID"]) || !isset($_POST["reps"]) || !isset($_POST["weight"]) ) {
+     echo "Parametrejä puuttui, Ei voida lisätä harjoitusta.";
     exit;
 }
 
@@ -62,9 +62,9 @@ if( empty($reps) || empty($weight) ){
 try{
     $pdo = getPdoConnection();
     // ampuu tiedot kantaan.
-    $sql = "INSERT INTO workoutexercise (ExerciseID, usersID, reps, weight) VALUES (?,?,?,?)";
+    $sql = "INSERT INTO workoutexercise (ExerciseID, userworkoutID, reps, weight) VALUES (?,?,?,?)";
     $statement = $pdo->prepare($sql);
-    $statement->execute( array($ExerciseID, $usersID, $reps, $weight) );
+    $statement->execute( array($ExerciseID, $userworkoutID, $reps, $weight) );
 
    
 
@@ -74,6 +74,16 @@ try{
     echo $e->getMessage();
 }}
 
+function startNewWorkout($username) {
+    require_once MODULES_DIR.'db.php';
+    $pdo = getPdoConnection();
+    $sql = "insert into userworkout (usersID) values (?)";
+    $statement = $pdo->prepare($sql);
+    $statement->execute();
+
+
+
+}
 
 function deleteExcersice($id) {
     require_once MODULES_DIR.'db.php';
