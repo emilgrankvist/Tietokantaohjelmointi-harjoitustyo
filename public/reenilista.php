@@ -25,7 +25,7 @@ echo "<h3> Koko reenilista <h3>"
         "<td>".' Toistot '."&nbsp;"."</td>".
         "<td>".' Paino (kg) '."&nbsp;"."</td>".
         "<td>".' Nimi '."&nbsp;"."</td>".
-        "<td>".' Reeni '."&nbsp;"."</td>".
+        "<td>".' Harjoitus '."&nbsp;"."</td>".
     "</tr>";
 
     foreach ($list as $x) {
@@ -37,7 +37,7 @@ echo "<h3> Koko reenilista <h3>"
             "<td>".$x["username"]."</td>".
             "<td>".$x["ExerciseType"]."</td>".
             "<td>".'<a href=reenilista.php?id='.$x["ID"].'"type="button" class="btn btn-danger"> Poista </a> </td>'. 
-            "<td>".'<a href=muokkaus.php?id='.$x["ID"].'"type="button" class="btn btn-success"> Muokkaa </a> </td>'.     
+            "<td>".'<a href=muokkaus.php?id='.$x["ID"].'"type="button" class="btn btn-success"> Vaihda harjoitus </a> </td>'.     
         "</tr>";
     }
     

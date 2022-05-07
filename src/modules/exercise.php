@@ -75,30 +75,20 @@ function enterExercise($ExerciseID, $usersID, $reps, $weight) {
 
 /* Edit funktio  */
 
-function Edit($ExerciseID, $usersID, $reps, $weight) {
+function Edit($ExerciseType) {
     require_once MODULES_DIR.'db.php';
 
-    if( !isset($ExerciseID) || !isset($reps) || !isset($weight) ){
-        
-    }
-
-    //tarkistetaan ettei ole tyhjiä arvoja
-
-    if(empty($username) || empty($password)) {
-        throw new Exception("Tyhjää arvoa ei voida laittaa");
+    if( !isset($ExerciseType) ){
+        exit;
     }
 
     try{
         $pdo = getPdoConnection();
-        $sql = "UPDATE exercises SET reps=?, weight=?, usersID=?, ExerciseID=?";
+        $sql = "UPDATE exercise SET ExerciseType = ?";
         $statement = $pdo->prepare($sql);
-        $statement->bindParam(1, $weight);
-        $statement->bindParam(2, $reps);
-        $statement->bindParam(3, $usersID);
-        $statement->bindParam(4, $ExerciseID);
+        $statement->bindParam(1,$ExerciseType);
         $statement->execute();
 
-        echo "Tiedot muokattu!";
     } catch (PDOException $e) {
         throw $e;
     }
