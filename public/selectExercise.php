@@ -9,7 +9,7 @@ $exerciseID = filter_input(INPUT_POST, "exercise");
 $usersID = filter_input(INPUT_POST, "person");
 $reps = filter_input(INPUT_POST, "reps", FILTER_SANITIZE_NUMBER_INT);
 $weight = filter_input(INPUT_POST, "weight", FILTER_SANITIZE_NUMBER_INT);
-$userworkoutID = filter_input(INPUT_GET, "", FILTER_SANITIZE_NUMBER_INT);;
+$userworkoutID = filter_input(INPUT_GET, "", FILTER_SANITIZE_NUMBER_INT);
 
 if(isset($usersID)) {
         enterExercise($exerciseID, $usersID, $reps, $weight, $userworkoutID);

@@ -4,6 +4,11 @@ include TEMPLATES_DIR.'head.php';
 include MODULES_DIR.'exercise.php';
 
 $id = filter_input(INPUT_GET, "id");
+$exerciseID = filter_input(INPUT_POST, "exercise");
+$usersID = filter_input(INPUT_POST, "person");
+$reps = filter_input(INPUT_POST, "reps", FILTER_SANITIZE_NUMBER_INT);
+$weight = filter_input(INPUT_POST, "weight", FILTER_SANITIZE_NUMBER_INT);
+$userworkoutID = filter_input(INPUT_GET, "", FILTER_SANITIZE_NUMBER_INT);
 
 if(isset($id)) {
     try{
@@ -14,27 +19,40 @@ if(isset($id)) {
     }
 }
 
-$exercises = getExercise();
+
+
+$list = Reenilista();
+
 // Print exercise list
-echo "<h5><h5>"
-."<ul>";
-foreach($exercises as $x){
-    echo "<li>".$x["ExerciseType"].'<a href=exercise.php?id='.$x["ExerciseID"].'"class="btn btn-primary">Poista</a> </li>'
-    .'<style>
-    a { 
-        padding: 15px; 
-    } 
-    </style>';
-}
-echo "</ul>";
+echo "<h3> Koko reenilista <h3>"
+."<br>"
+."<table>".
+    "<tr>".
+        "<td>".' Toistot '."&nbsp;"."</td>".
+        "<td>".' Paino (kg) '."&nbsp;"."</td>".
+        "<td>".' Nimi ID'."&nbsp;"."</td>".
+        "<td>".' Reeni ID'."&nbsp;"."</td>".
+    
+        "</tr>";
 
-    $exercise = filter_input(INPUT_POST, "exercise");
+    foreach ($list as $x)
+    {
+        echo 
 
-    if(isset($exercise)) {
-        try {
-            addExercise($exercise);
-            echo '<div class="alert alert-success" role="alert">Harjoitus lisätty!</div>';
-        }catch (Exception $e) {
-            echo '<div class="alert alert-danger" role="alert">'.$e->getMessage().'</div>';
-        }
+        "<tr>".
+            "<td>".$x["reps"]."</td>".
+            "<td>".$x["weight"]."</td>".
+            "<td>".$x["usersID"]."</td>".
+            "<td>".$x["ExerciseID"]."</td>".
+            "<td>".'<a href=reenilista.php?id='.$x["ExerciseID"].'"type="button" class="btn btn-danger">Poista</a> </td>'. 
+            "<td>".'<a href=muokkaus.php?id='.$x["ExerciseID"].'"type="button" class="btn btn-success">Muokkaa</a> </td>'.     
+        "</tr>";
     }
+    
+    echo 
+    "</table>";
+
+?>
+
+<?php include TEMPLATES_DIR.'foot.php'; ?>
+    

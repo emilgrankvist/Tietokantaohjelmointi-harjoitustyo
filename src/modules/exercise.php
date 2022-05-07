@@ -14,6 +14,8 @@ function getExercise() {
     }
 }
 
+
+
 function addExercise($exercise){
     require_once MODULES_DIR.'db.php';
 
@@ -71,7 +73,55 @@ function enterExercise($ExerciseID, $usersID, $reps, $weight) {
 
 }
 
+/* Edit funktio  */
 
+function Edit($ExerciseID, $usersID, $reps, $weight) {
+    require_once MODULES_DIR.'db.php';
+
+    if( !isset($ExerciseID) || !isset($reps) || !isset($weight) ){
+        
+    }
+
+    //tarkistetaan ettei ole tyhjiä arvoja
+
+    if(empty($username) || empty($password)) {
+        throw new Exception("Tyhjää arvoa ei voida laittaa");
+    }
+
+    try{
+        $pdo = getPdoConnection();
+        $sql = "UPDATE exercises SET reps=?, weight=?, usersID=?, ExerciseID=?";
+        $statement = $pdo->prepare($sql);
+        $statement->bindParam(1, $weight);
+        $statement->bindParam(2, $reps);
+        $statement->bindParam(3, $usersID);
+        $statement->bindParam(4, $ExerciseID);
+        $statement->execute();
+
+        echo "Tiedot muokattu!";
+    } catch (PDOException $e) {
+        throw $e;
+    }
+}
+
+/* Reenilista funktio */
+
+function Reenilista() {
+    require_once MODULES_DIR.'db.php';
+
+    try{
+        $pdo = getPdoConnection();
+
+        $sql = "SELECT * FROM exercises";
+        $exercises = $pdo->query($sql);
+        return $exercises->fetchAll();
+
+
+
+    } catch(PDOException $e){
+        echo $e->getMessage();
+    } 
+}
 
 function deleteExcersice($id) {
     require_once MODULES_DIR.'db.php';
