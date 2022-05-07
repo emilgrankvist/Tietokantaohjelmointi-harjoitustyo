@@ -5,7 +5,7 @@ function getExercise() {
 
     try {
         $pdo = getPdoConnection();
-        $sql = "select * from exercise";
+        $sql = "SELECT * FROM exercise";
         $exercises = $pdo->query($sql);
 
         return $exercises->fetchAll();
@@ -136,12 +136,12 @@ function deleteExcersice($id) {
     try {
         $pdo = getPdoConnection();
         $pdo->beginTransaction();
-        $sql = "delete from exercises where exerciseID = ?";
+        $sql = "DELETE FROM exercises WHERE exerciseID = ?";
         $statement = $pdo->prepare($sql);
         $statement->bindParam(1, $id);
         $statement->execute();
 
-        $sql = "delete from exercise where exerciseID = ?";
+        $sql = "DELETE FROM exercise WHERE exerciseID = ?";
         $statement = $pdo->prepare($sql);
         $statement->bindParam(1,$id);
         $statement->execute();

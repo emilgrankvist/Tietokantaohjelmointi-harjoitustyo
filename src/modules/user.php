@@ -34,7 +34,7 @@ function addUser($username, $password){
 
     try{
         $pdo = getPdoConnection();
-        $sql = "insert into users (username, password) values (?, ?)";
+        $sql = "INSERT INTO users (username, password) VALUES (?, ?)";
         $statement = $pdo->prepare($sql);
         $statement->bindParam(1, $username);
         $hash_password = password_hash($password, PASSWORD_DEFAULT);
