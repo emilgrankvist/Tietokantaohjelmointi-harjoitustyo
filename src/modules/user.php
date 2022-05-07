@@ -41,7 +41,7 @@ function addUser($username, $password){
         $statement->bindParam(2, $hash_password);
         $statement->execute();
 
-        echo "Käyttäjä".$username." on lisätty tietokantaan";
+        echo "Käyttäjä"." ".$username." on lisätty tietokantaan";
     } catch (PDOException $e) {
         throw $e;
     }
