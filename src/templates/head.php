@@ -19,7 +19,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="./">Home</a>
+            <a class="nav-link active" aria-current="page" href="./">Etusivu</a>
             </li>
             <li class="nav-item">
             <a class="nav-link" href="user.php">Lisää käyttäjä</a>
@@ -36,9 +36,9 @@
             <li class="nav-item">
             <?php 
                 if(isset($_SESSION["username"])){
-                    echo '<a class="nav-link bg-danger" href="logout.php">Log out</a>';
+                    echo '<a class="nav-link bg-danger" href="logout.php">Kirjaudu ulos</a>';
                 }else{
-                    echo '<a class="nav-link bg-success" href="login.php">Log in</a>';
+                    echo '<a class="nav-link bg-success" href="login.php">Kirjaudu sisään</a>';
                 }
             ?>
             </li>
