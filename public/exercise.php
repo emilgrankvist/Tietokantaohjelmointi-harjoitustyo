@@ -27,7 +27,7 @@ foreach($exercises as $x){
     </li>'
     .'<style>
     a { 
-        padding: 15px; 
+        margin: 5px;
     } 
     </style>';
 }
