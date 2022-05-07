@@ -112,10 +112,10 @@ function Reenilista() {
     try{
         $pdo = getPdoConnection();
 
-        $sql = "select username, ExerciseType, reps, weight
-        from users, exercise, exercises
-        WHERE users.id = exercises.usersID and exercises.ExerciseID = exercise.ExerciseID
-        order by username";
+        $sql = "SELECT username, ExerciseType, reps, weight, exercises.ID
+        FROM users, exercise, exercises
+        WHERE users.id = exercises.usersID AND exercises.ExerciseID = exercise.ExerciseID
+        ORDER BY username;";
         $exercises = $pdo->query($sql);
         return $exercises->fetchAll();
 
@@ -150,5 +150,27 @@ function deleteExcersice($id) {
     } catch(PDOException $e) {
         $pdo->rollBack();
         throw $e;
+    }
+
+    function deleteListaLog($Log) {
+        require_once MODULES_DIR.'db.php';
+    
+        if (!isset($Log)) {
+            throw new Exception("Parametreja puuttuu! Harjoitusta ei voida poistaa!");
+        }
+    
+        try {
+            $pdo = getPdoConnection();
+            $pdo->beginTransaction();
+            $sql = "delete from exercises where ID = ?";
+            $statement = $pdo->prepare($sql);
+            $statement->bindParam(1, $Log);
+            $statement->execute();
+    
+            $pdo->commit();
+        } catch(PDOException $e) {
+            $pdo->rollBack();
+            throw $e;
+        }
     }
 }
