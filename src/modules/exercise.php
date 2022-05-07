@@ -151,8 +151,11 @@ function deleteExcersice($id) {
         $pdo->rollBack();
         throw $e;
     }
+}
 
-    function deleteListaLog($Log) {
+
+
+function deleteListaLog($Log) {
         require_once MODULES_DIR.'db.php';
     
         if (!isset($Log)) {
@@ -162,9 +165,9 @@ function deleteExcersice($id) {
         try {
             $pdo = getPdoConnection();
             $pdo->beginTransaction();
-            $sql = "delete from exercises where ID = ?";
+            $sql = "DELETE FROM exercises WHERE ID = ?";
             $statement = $pdo->prepare($sql);
-            $statement->bindParam(1, $Log);
+            $statement->bindParam(1,$Log);
             $statement->execute();
     
             $pdo->commit();
@@ -173,4 +176,3 @@ function deleteExcersice($id) {
             throw $e;
         }
     }
-}
