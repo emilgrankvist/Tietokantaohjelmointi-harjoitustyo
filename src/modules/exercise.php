@@ -112,7 +112,10 @@ function Reenilista() {
     try{
         $pdo = getPdoConnection();
 
-        $sql = "SELECT * FROM exercises";
+        $sql = "select username, ExerciseType, reps, weight
+        from users, exercise, exercises
+        WHERE users.id = exercises.usersID and exercises.ExerciseID = exercise.ExerciseID
+        order by username";
         $exercises = $pdo->query($sql);
         return $exercises->fetchAll();
 

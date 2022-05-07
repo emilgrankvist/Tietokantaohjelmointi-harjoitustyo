@@ -27,13 +27,13 @@ $list = Reenilista();
 echo "<h3> Koko reenilista <h3>"
 ."<br>"
 ."<table>".
+
     "<tr>".
         "<td>".' Toistot '."&nbsp;"."</td>".
         "<td>".' Paino (kg) '."&nbsp;"."</td>".
-        "<td>".' Nimi ID'."&nbsp;"."</td>".
-        "<td>".' Reeni ID'."&nbsp;"."</td>".
-    
-        "</tr>";
+        "<td>".' Nimi '."&nbsp;"."</td>".
+        "<td>".' Reeni '."&nbsp;"."</td>".
+    "</tr>";
 
     foreach ($list as $x)
     {
@@ -42,14 +42,18 @@ echo "<h3> Koko reenilista <h3>"
         "<tr>".
             "<td>".$x["reps"]."</td>".
             "<td>".$x["weight"]."</td>".
-            "<td>".$x["usersID"]."</td>".
-            "<td>".$x["ExerciseID"]."</td>".
-            "<td>".'<a href=reenilista.php?id='.$x["ExerciseID"].'"type="button" class="btn btn-danger">Poista</a> </td>'. 
-            "<td>".'<a href=muokkaus.php?id='.$x["ExerciseID"].'"type="button" class="btn btn-success">Muokkaa</a> </td>'.     
+            "<td>".$x["username"]."</td>".
+            "<td>".$x["ExerciseType"]."</td>".
+            "<td>".'<a href=reenilista.php?id='.$x["ExerciseType"].'"type="button" class="btn btn-danger">Poista</a> </td>'. 
+            "<td>".'<a href=muokkaus.php?id='.$x["ExerciseType"].'"type="button" class="btn btn-success">Muokkaa</a> </td>'.     
         "</tr>";
     }
     
-    echo 
+    echo '<style>
+    a { 
+        padding: 20px; 
+    } 
+    </style>'.
     "</table>";
 
 ?>
