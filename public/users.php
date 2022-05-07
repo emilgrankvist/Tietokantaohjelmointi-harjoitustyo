@@ -1,7 +1,7 @@
 <?php
 require_once MODULES_DIR.'db.php';
 
-$sql = "Select * from users";
+$sql = "SELECT * FROM users";
 $pdo = getPdoConnection();
 $users = $pdo->query($sql);
 
