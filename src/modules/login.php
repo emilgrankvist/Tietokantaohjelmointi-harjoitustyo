@@ -16,7 +16,7 @@ function login ($username, $password){
 
     try {
         $pdo = getPdoConnection();
-        $sql = "select * from users where username=?";
+        $sql = "SELECT * FROM users WHERE username=?";
         $statement = $pdo->prepare($sql);
         $statement->bindParam(1, $username);
 
