@@ -21,7 +21,7 @@ create table exercises (
     
     ExerciseID int not null,
     index ExerciseID(ExerciseID),
-    foreign key (ExerciseID) REFERENCES exercise(ExerciseID),
+    foreign key (ExerciseID) REFERENCES Exercise(ExerciseID),
     
     usersID int not null,
     index usersID(usersID),
